@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+        <title>List of users</title>
+    </head>
+    <body>
+    <header th:replace="header :: header"></header>
+    <fieldset class="border p-4">
+        <legend>List of users</legend>
+        <a class="btn btn-success" role="button" th:href="@{/user-creation}">Add user</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user: ${users}">
+                <th scope="row" th:text="${user.id}"/>
+                <td th:text="${user.name}"/>
+                <td th:text="${user.address}"/>
+                <td th:text="${user.phoneNumber}"/>
+                <td>
+                    <a class="btn btn-warning" th:href="@{/user-modification/{id}(id=${user.getId()})}">Modify</a>
+                    <a class="btn btn-danger" th:href="@{/remove-user/{id}(id=${user.getId()})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+    </body>
+</html>
+
+
