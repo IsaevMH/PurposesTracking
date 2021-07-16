@@ -55,4 +55,11 @@ public class UserController {
         userService.save(user);
         return showUsers(model);
     }
+
+    @GetMapping("/user-profile/{id}")
+    public String showUserProfile(@PathVariable long id, ModelMap model) {
+        User user = userService.get(id);
+        model.put("user", user);
+        return "/user-profile";
+    }
 }
