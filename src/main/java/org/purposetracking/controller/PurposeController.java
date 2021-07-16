@@ -28,6 +28,8 @@ public class PurposeController {
     @GetMapping("/purpose-modification/{id}")
     public String showModificationForm(@PathVariable long id, ModelMap model) {
         Purpose purpose = purposeService.get(id);
+        Iterable<User> users = userService.getAll();
+        model.put("users", users);
         model.put("purpose", purpose);
         return "/purpose-modification";
     }
