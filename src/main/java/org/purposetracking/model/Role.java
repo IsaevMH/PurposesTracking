@@ -1,6 +1,7 @@
 package org.purposetracking.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,7 @@ public class Role{
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             }, mappedBy = "roles")
+
     private Set<User> users;
 
     public long getRoleId() {
@@ -38,11 +40,25 @@ public class Role{
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return roleId == role.roleId && Objects.equals(name, role.name) && Objects.equals(users, role.users);
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    @Override
+    public int hashCode() {
+        return Objects.hash(roleId, name, users);
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "roleId=" + roleId +
+                ", name='" + name + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

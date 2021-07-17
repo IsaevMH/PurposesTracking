@@ -1,11 +1,8 @@
 package org.purposetracking.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "purposes", schema = "public")
@@ -30,13 +27,6 @@ public class Purpose {
     private User user;
 
     public Purpose() {}
-
-    public Purpose(long id, String title, LocalDateTime dateOfCreation, int daysTally) {
-        this.id = id;
-        this.title = title;
-        this.dateOfCreation = dateOfCreation;
-        this.daysTally = daysTally;
-    }
 
     public long getId() {
         return id;
@@ -71,5 +61,29 @@ public class Purpose {
     }
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Purpose purpose = (Purpose) o;
+        return id == purpose.id && daysTally == purpose.daysTally && Objects.equals(title, purpose.title) && Objects.equals(dateOfCreation, purpose.dateOfCreation) && Objects.equals(user, purpose.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, dateOfCreation, daysTally, user);
+    }
+
+    @Override
+    public String toString() {
+        return "Purpose{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", dateOfCreation=" + dateOfCreation +
+                ", daysTally=" + daysTally +
+                ", user=" + user +
+                '}';
     }
 }
