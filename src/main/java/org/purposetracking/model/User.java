@@ -1,11 +1,14 @@
 package org.purposetracking.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "public")
 public class User {
 
     @Id
@@ -14,7 +17,10 @@ public class User {
     private long id;
 
     @Column(name = "name")
-    private String name;
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "address")
     private String address;
@@ -25,16 +31,23 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Purpose> purposeSet;
 
+    @Column(name = "activate")
+    private boolean activate;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "users_roles",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") })
+    Set<Role> roles;
+
     public User(){}
 
     public User(String name) {
-        this.name = name;
-    }
-
-    public User(String name, String address, String phoneNumber) {
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.username = name;
     }
 
     public long getId() {
@@ -44,11 +57,11 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getAddress() {
@@ -63,5 +76,26 @@ public class User {
     }
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public boolean isActivate() {
+        return activate;
+    }
+    public void setActivate(boolean activate) {
+        this.activate = activate;
     }
 }

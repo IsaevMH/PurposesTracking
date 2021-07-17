@@ -7,6 +7,5 @@ public interface RootService<T> {
     void update(T object);
     void delete(T object);
     T get(long id);
-    Iterable<T> getAll(String object);
     Iterable<T> getAll();
 }

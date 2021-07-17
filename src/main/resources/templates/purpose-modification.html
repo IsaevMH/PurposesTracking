@@ -30,7 +30,7 @@
                     <div class="col-md-6 form-group">
                         <label>User</label>
                         <select class="form-control" th:field="*{user}" id="dropOperator">
-                            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+                            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
                         </select>
                     </div>
                 </div>

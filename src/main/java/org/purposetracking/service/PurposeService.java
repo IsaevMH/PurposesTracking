@@ -27,13 +27,7 @@ public class PurposeService implements RootService<Purpose> {
 
     @Override
     public Purpose get(long id) {
-        return purposeRepository.findPurposeById(id);
-    }
-
-    @Override
-    public Iterable<Purpose> getAll(String purpose) {
-        //return purposeRepository.findAllPurposesByName(purpose);
-        return null;
+        return purposeRepository.getById(id);
     }
 
     @Override
