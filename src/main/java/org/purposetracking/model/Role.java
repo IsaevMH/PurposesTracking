@@ -52,13 +52,4 @@ public class Role{
     public int hashCode() {
         return Objects.hash(roleId, name, users);
     }
-
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", name='" + name + '\'' +
-                ", users=" + users +
-                '}';
-    }
 }

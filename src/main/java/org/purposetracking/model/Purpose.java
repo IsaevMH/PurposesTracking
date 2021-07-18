@@ -75,15 +75,4 @@ public class Purpose {
     public int hashCode() {
         return Objects.hash(id, title, dateOfCreation, daysTally, user);
     }
-
-    @Override
-    public String toString() {
-        return "Purpose{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", dateOfCreation=" + dateOfCreation +
-                ", daysTally=" + daysTally +
-                ", user=" + user +
-                '}';
-    }
 }
