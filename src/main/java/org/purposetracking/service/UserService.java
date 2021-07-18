@@ -29,6 +29,7 @@ public class UserService implements RootService<User>{
         Set<Role> roles = new HashSet<>();
         roles.add(roleRepository.getById(2L));
         user.setRoles(roles);
+        user.setActivate(true);
         userRepository.save(user);
     }
 
