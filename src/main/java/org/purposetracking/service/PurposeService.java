@@ -2,13 +2,15 @@ package org.purposetracking.service;
 
 import org.purposetracking.model.Purpose;
 import org.purposetracking.repository.PurposeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class PurposeService implements RootService<Purpose> {
 
-    @Autowired
-    private PurposeRepository purposeRepository;
+    private final PurposeRepository purposeRepository;
+
+    public PurposeService(PurposeRepository purposeRepository) {
+        this.purposeRepository = purposeRepository;
+    }
 
     @Override
     public void save(Purpose purpose) {
