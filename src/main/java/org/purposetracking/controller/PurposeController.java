@@ -4,7 +4,6 @@ import org.purposetracking.model.Purpose;
 import org.purposetracking.model.User;
 import org.purposetracking.service.PurposeService;
 import org.purposetracking.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +12,13 @@ import java.time.LocalDateTime;
 @Controller("/purpose")
 public class PurposeController {
 
-    @Autowired
-    private PurposeService purposeService;
-    @Autowired
-    private UserService userService;
+    private final PurposeService purposeService;
+    private final UserService userService;
+
+    public PurposeController(PurposeService purposeService, UserService userService) {
+        this.purposeService = purposeService;
+        this.userService = userService;
+    }
 
     @GetMapping("/purposes")
     public String showPurposes(ModelMap model) {

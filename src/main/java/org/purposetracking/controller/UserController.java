@@ -2,24 +2,20 @@ package org.purposetracking.controller;
 
 import org.purposetracking.model.Role;
 import org.purposetracking.model.User;
-import org.purposetracking.repository.RoleRepository;
 import org.purposetracking.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Set;
 
 @Controller("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private RoleRepository roleRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
     public String showUsers(ModelMap model) {
