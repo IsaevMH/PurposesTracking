@@ -35,7 +35,10 @@ public class UserService implements RootService<User>{
 
     @Override
     public void update(User user) {
-        userRepository.save(user);
+        Set<Role> roles = user.getRoles();
+        user.setRoles(roles);
+        user.setActivate(true);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
