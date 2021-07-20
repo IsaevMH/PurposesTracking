@@ -9,7 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
-@Controller("/purpose")
+@Controller()
 public class PurposeController {
 
     private final PurposeService purposeService;

@@ -8,7 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
-@Controller("/user")
+@Controller()
 public class UserController {
 
     private final UserService userService;

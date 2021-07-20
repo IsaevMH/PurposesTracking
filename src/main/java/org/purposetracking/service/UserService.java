@@ -44,7 +44,7 @@ public class UserService implements RootService<User>{
 
     @Override
     public User get(long id) {
-        return userRepository.findUserById(id);
+        return userRepository.getById(id);
     }
 
     @Override

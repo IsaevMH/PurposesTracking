@@ -26,7 +26,7 @@
                 <div class="col-md-6 form-group">
                     <label>Roles</label>
                     <select class="form-control" th:field="*{roles}" id="dropOperator">
-                        <option th:each="role : ${roles}" th:value="${role.getRoleId()}" th:text="${role.getName()}"></option>
+                        <option th:each="role : ${roles}" th:value="${role.roleId}" th:text="${role.name}"></option>
                     </select>
                 </div>
                 <div class="col-md-6 form-group">

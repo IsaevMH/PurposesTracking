@@ -3,7 +3,7 @@ That application can help users monitor count of days which they follow to parti
 
 **To create a database please follow the steps below:**
 
-* *Find and run the "databaseCreation.sql" sql script for creating database, table and links between them;*
+* *Find and run the "V1__dbInitialization.sql" sql script for creating database, table and links between them;*
 * *Run the "PurposeTracking" project.*
 
 If you have found any bugs please email me: **isaev.mh.94@gmail.com**
@@ -13,7 +13,7 @@ If you have found any bugs please email me: **isaev.mh.94@gmail.com**
 
 **Для работы приложения необходимо:**
 
-* Найти и запустить sql script "databaseCreation.sql" для создания БД, таблиц и зависимостей
+* Найти и запустить sql script "V1__dbInitialization.sql" для создания БД, таблиц и зависимостей
 * Запустить проект.
 
 Если Вы нашли какие-либо баги/неточности, пожалуйста сообщите мне: **isaev.mh.94@gmail.com**

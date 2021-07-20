@@ -1,5 +1,3 @@
-create database purposes-tracking;
-
 create table users (
     user_id serial primary key,
     name varchar(40) not null,
@@ -13,8 +11,8 @@ create table purposes (
     title varchar(100) not null,
     creation_date date not null,
     days_tally int not null,
-    user_id long not null,
-    foreign key (user_id) references users(user_id);
+    user_id bigint not null,
+    foreign key (user_id) references users(user_id)
 );
 
 create table roles(
@@ -23,8 +21,8 @@ create table roles(
 );
 
 create table users_roles(
-    user_id long not null,
-    role_id long not null,
+    user_id bigint not null,
+    role_id bigint not null,
     foreign key (user_id) references users(user_id),
     foreign key (role_id) references roles(role_id)
 );
@@ -49,4 +47,4 @@ insert into
 insert into
     purposes (title, creation_date, days_tally, user_id)
     values
-           ('Stop to drink corbonated drinks like coca-cola', 2021-07-17, 1, 1);
+           ('Stop to drink corbonated drinks like coca-cola', '2021-07-17', 1, 1);
