@@ -4,25 +4,21 @@ import org.purposetracking.model.Purpose;
 import org.purposetracking.model.User;
 import org.purposetracking.service.PurposeService;
 import org.purposetracking.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
-@Controller("/purpose")
+@Controller()
 public class PurposeController {
 
-    @Autowired
-    private PurposeService purposeService;
-    @Autowired
-    private UserService userService;
+    private final PurposeService purposeService;
+    private final UserService userService;
+
+    public PurposeController(PurposeService purposeService, UserService userService) {
+        this.purposeService = purposeService;
+        this.userService = userService;
+    }
 
     @GetMapping("/purposes")
     public String showPurposes(ModelMap model) {
@@ -34,6 +30,8 @@ public class PurposeController {
     @GetMapping("/purpose-modification/{id}")
     public String showModificationForm(@PathVariable long id, ModelMap model) {
         Purpose purpose = purposeService.get(id);
+        Iterable<User> users = userService.getAll();
+        model.put("users", users);
         model.put("purpose", purpose);
         return "/purpose-modification";
     }

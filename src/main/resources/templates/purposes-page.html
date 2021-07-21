@@ -27,7 +27,9 @@
             <th scope="col" th:text="${purpose.id}"/>
             <td th:text="${purpose.title}"/>
             <td th:text="${purpose.dateOfCreation.toLocalDate()}"/>
-            <td th:text="${purpose.getUser().name}"/>
+            <td>
+                <a th:text="${purpose.getUser().username}" th:href="@{/user-profile/{id}(id = ${purpose.getUser().id})}"/>
+            </td>
             <td th:text="${purpose.daysTally}"/>
             <td>
                 <a class="btn btn-warning" th:href="@{/purpose-modification/{id}(id=${purpose.getId()})}">Modify</a>

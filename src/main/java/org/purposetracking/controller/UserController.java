@@ -1,17 +1,21 @@
 package org.purposetracking.controller;
 
+import org.purposetracking.model.Role;
 import org.purposetracking.model.User;
 import org.purposetracking.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import java.util.Set;
 
-@Controller("/user")
+@Controller()
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
     public String showUsers(ModelMap model) {
@@ -31,7 +35,9 @@ public class UserController {
     @GetMapping("/user-modification/{id}")
     public String showModificationForm(@PathVariable long id, ModelMap model) {
         User user = userService.get(id);
+        Set<Role> roles = user.getRoles();
         model.put("user", user);
+        model.put("roles", roles);
         return "/user-modification";
     }
 
@@ -54,5 +60,12 @@ public class UserController {
         model.addAttribute("user", user);
         userService.save(user);
         return showUsers(model);
+    }
+
+    @GetMapping("/user-profile/{id}")
+    public String showUserProfile(@PathVariable long id, ModelMap model) {
+        User user = userService.get(id);
+        model.put("user", user);
+        return "/user-profile";
     }
 }
