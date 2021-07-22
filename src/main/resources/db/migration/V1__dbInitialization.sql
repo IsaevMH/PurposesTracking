@@ -3,7 +3,8 @@ create table users (
     name varchar(40) not null,
     password varchar(20) not null,
     address varchar(100) null,
-    phone_number varchar(50) null
+    phone_number varchar(50) null,
+    activate boolean not null
 );
 
 create table purposes (
@@ -28,10 +29,10 @@ create table users_roles(
 );
 
 insert into
-    users (name, password, address, phone_number)
+    users (name, password, address, phone_number, activate)
     values
-           ('UserAccount', '123', 'Moscow', '+74953332211'),
-           ('AdminAccount', '321', 'Saint-Petesburg', '+78125554433');
+           ('UserAccount', '123', 'Moscow', '+74953332211', true),
+           ('AdminAccount', '321', 'Saint-Petesburg', '+78125554433', true);
 
 insert into
     roles (name)

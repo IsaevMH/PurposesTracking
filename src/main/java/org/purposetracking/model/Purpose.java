@@ -68,15 +68,11 @@ public class Purpose {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Purpose purpose = (Purpose) o;
-        return id == purpose.id
-                && daysTally == purpose.daysTally
-                && Objects.equals(title, purpose.title)
-                && Objects.equals(dateOfCreation, purpose.dateOfCreation)
-                && Objects.equals(user, purpose.user);
+        return id == purpose.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, dateOfCreation, daysTally, user);
+        return Objects.hash(id);
     }
 }

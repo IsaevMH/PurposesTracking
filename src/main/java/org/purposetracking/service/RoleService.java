@@ -1,7 +1,9 @@
 package org.purposetracking.service;
 
 import org.purposetracking.model.Role;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RoleService implements RootService<Role>{
     @Override
     public void save(Role object) {

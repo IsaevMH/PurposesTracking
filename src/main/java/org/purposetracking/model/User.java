@@ -97,16 +97,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id
-                && activate == user.activate
-                && Objects.equals(username, user.username)
-                && Objects.equals(password, user.password)
-                && Objects.equals(address, user.address)
-                && Objects.equals(phoneNumber, user.phoneNumber);
+        return id == user.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, address, phoneNumber, activate);
+        return Objects.hash(id);
     }
 }
