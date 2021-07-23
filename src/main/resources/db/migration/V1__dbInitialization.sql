@@ -13,7 +13,9 @@ create table purposes (
     creation_date date not null,
     days_tally int not null,
     user_id bigint not null,
-    foreign key (user_id) references users(user_id)
+    category_id bigint not null,
+    foreign key (user_id) references users(user_id),
+    foreign key (category_id) references categories(category_id)
 );
 
 create table roles(
@@ -26,6 +28,11 @@ create table users_roles(
     role_id bigint not null,
     foreign key (user_id) references users(user_id),
     foreign key (role_id) references roles(role_id)
+);
+
+create table categories(
+    category_id serial primary key,
+    name varchar not null
 );
 
 insert into
@@ -44,6 +51,11 @@ insert into
     users_roles (user_id, role_id)
     values
            (1,1),(2,2);
+
+insert into
+    categories (name)
+    values
+           ('Healthy life');
 
 insert into
     purposes (title, creation_date, days_tally, user_id)

@@ -22,6 +22,10 @@ public class Purpose {
     @Column(name = "days_tally")
     private int daysTally;
 
+    @ManyToOne()
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -61,6 +65,13 @@ public class Purpose {
     }
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

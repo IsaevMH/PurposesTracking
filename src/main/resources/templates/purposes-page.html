@@ -17,6 +17,7 @@
             <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Date</th>
+            <th scope="col">Category</th>
             <th scope="col">User</th>
             <th scope="col">Count of days</th>
             <th scope="col">Action</th>
@@ -27,10 +28,11 @@
             <th scope="col" th:text="${purpose.id}"/>
             <td th:text="${purpose.title}"/>
             <td th:text="${purpose.dateOfCreation.toLocalDate()}"/>
+            <td th:text="*{purpose.getCategory().name}"></td>
             <td>
                 <a th:text="${purpose.getUser().username}" th:href="@{/user/profile/{id}(id = ${purpose.getUser().id})}"/>
             </td>
-            <td th:text="${purpose.daysTally}"/>
+            <td class="text-center" th:text="${purpose.daysTally}"/>
             <td>
                 <a class="btn btn-warning" th:href="@{/purpose/modify/{id}(id=${purpose.getId()})}">Modify</a>
                 <a class="btn btn-danger" th:href="@{/purpose/remove/{id}(id=${purpose.getId()})}">Delete</a>

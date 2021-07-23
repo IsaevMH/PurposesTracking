@@ -28,6 +28,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Purpose> purposeSet;
 
+
+
     @Column(name = "activate")
     private boolean activate;
 

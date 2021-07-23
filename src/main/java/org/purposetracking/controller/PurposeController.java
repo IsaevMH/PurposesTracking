@@ -1,7 +1,9 @@
 package org.purposetracking.controller;
 
+import org.purposetracking.model.Category;
 import org.purposetracking.model.Purpose;
 import org.purposetracking.model.User;
+import org.purposetracking.service.CategoryService;
 import org.purposetracking.service.PurposeService;
 import org.purposetracking.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,12 @@ public class PurposeController {
 
     private final PurposeService purposeService;
     private final UserService userService;
+    private final CategoryService categoryService;
 
-    public PurposeController(PurposeService purposeService, UserService userService) {
+    public PurposeController(PurposeService purposeService, UserService userService, CategoryService categoryService) {
         this.purposeService = purposeService;
         this.userService = userService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/purpose/all")
@@ -31,6 +35,8 @@ public class PurposeController {
     public String showModificationForm(@PathVariable long id, ModelMap model) {
         Purpose purpose = purposeService.get(id);
         Iterable<User> users = userService.getAll();
+        Iterable<Category> categories = categoryService.getAll();
+        model.put("categories", categories);
         model.put("users", users);
         model.put("purpose", purpose);
         return "purpose-modification";
@@ -48,6 +54,8 @@ public class PurposeController {
         Purpose purpose = new Purpose();
         purpose.setDateOfCreation(LocalDateTime.now());
         Iterable<User> users = userService.getAll();
+        Iterable<Category> categories = categoryService.getAll();
+        model.put("categories", categories);
         model.put("users", users);
         model.put("purpose", purpose);
         return "purpose-creation";
