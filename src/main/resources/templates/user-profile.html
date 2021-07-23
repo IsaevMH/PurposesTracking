@@ -7,7 +7,7 @@
 <header th:replace="header :: header"></header>
 <div class="card bg-light mb-1 mx-auto" style="max-width: 20rem;" >
     <div class="card-header text-center">Profile page.</div>
-    <div class="card-body" th:action="@{/user-profile}" th:object="${user}">
+    <div class="card-body" th:action="@{/user/profile}" th:object="${user}">
         <h5 class="card-title text-center card-center" th:text="*{username}"></h5>
         <p class="card-text">
             <strong>ID: </strong>
@@ -23,7 +23,7 @@
         </p>
         <p class="card-text">
             <strong>Action: </strong>
-            <a class="btn btn-warning" th:href="@{/user-modification/{id}(id=${user.id})}">Modify</a>
+            <a class="btn btn-warning" th:href="@{/user/modify/{id}(id=${user.id})}">Modify</a>
         </p>
     </div>
 </div>

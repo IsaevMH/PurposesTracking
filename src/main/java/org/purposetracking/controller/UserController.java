@@ -17,14 +17,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping("/user/all")
     public String showUsers(ModelMap model) {
         Iterable<User> users = userService.getAll();
         model.put("users", users);
         return "users-page";
     }
 
-    @GetMapping("/remove-user/{id}")
+    @GetMapping("/user/remove/{id}")
     public String deleteUser(@PathVariable long id, ModelMap model) {
         User user = userService.get(id);
         if(user != null)
@@ -32,7 +32,7 @@ public class UserController {
         return showUsers(model);
     }
 
-    @GetMapping("/user-modification/{id}")
+    @GetMapping("/user/modify/{id}")
     public String showModificationForm(@PathVariable long id, ModelMap model) {
         User user = userService.get(id);
         Set<Role> roles = user.getRoles();
@@ -41,28 +41,28 @@ public class UserController {
         return "/user-modification";
     }
 
-    @PostMapping("/user-modification")
+    @PostMapping("/user/modify")
     public String modifyUser(@ModelAttribute User user, ModelMap model) {
         model.put("user", user);
         userService.update(user);
         return showUsers(model);
     }
 
-    @GetMapping("/user-creation")
+    @GetMapping("/user/new")
     public String showRegistrationForm(ModelMap model) {
         User user = new User();
         model.put("user", user);
         return "/user-creation";
     }
 
-    @PostMapping("/user-creation")
+    @PostMapping("/user/new")
     public String createUser(@ModelAttribute User user, ModelMap model) {
         model.addAttribute("user", user);
         userService.save(user);
         return showUsers(model);
     }
 
-    @GetMapping("/user-profile/{id}")
+    @GetMapping("/user/profile/{id}")
     public String showUserProfile(@PathVariable long id, ModelMap model) {
         User user = userService.get(id);
         model.put("user", user);

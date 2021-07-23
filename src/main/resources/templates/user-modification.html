@@ -9,7 +9,7 @@
 <fieldset class="border p-4">
     <legend>Modified user</legend>
     <div class="container-fluid">
-        <form action="#" th:action="@{/user-modification}" th:object="${user}" method="post">
+        <form action="#" th:action="@{/user/modify}" th:object="${user}" method="post">
             <div class="form-row">
                 <div class="col-md-6 form-group">
                     <input type="hidden" th:field="*{id}" />

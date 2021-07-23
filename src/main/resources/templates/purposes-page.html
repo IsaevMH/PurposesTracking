@@ -28,7 +28,7 @@
             <td th:text="${purpose.title}"/>
             <td th:text="${purpose.dateOfCreation.toLocalDate()}"/>
             <td>
-                <a th:text="${purpose.getUser().username}" th:href="@{/user-profile/{id}(id = ${purpose.getUser().id})}"/>
+                <a th:text="${purpose.getUser().username}" th:href="@{/user/profile/{id}(id = ${purpose.getUser().id})}"/>
             </td>
             <td th:text="${purpose.daysTally}"/>
             <td>
