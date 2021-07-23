@@ -3,6 +3,9 @@ package org.purposetracking.service;
 import org.purposetracking.model.Purpose;
 import org.purposetracking.repository.PurposeRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class PurposeService implements RootService<Purpose> {
 
@@ -33,7 +36,7 @@ public class PurposeService implements RootService<Purpose> {
     }
 
     @Override
-    public Iterable<Purpose> getAll() {
+    public List<Purpose> getAll() {
         return purposeRepository.findAll();
     }
 }

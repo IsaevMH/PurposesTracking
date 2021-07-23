@@ -1,10 +1,13 @@
 package org.purposetracking.service;
 
+import org.purposetracking.model.Category;
 import org.purposetracking.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class CategoryService implements RootService {
+public class CategoryService implements RootService<Category> {
 
     private final CategoryRepository categoryRepository;
 
@@ -12,28 +15,29 @@ public class CategoryService implements RootService {
         this.categoryRepository = categoryRepository;
     }
 
-    @Override
-    public void save(Object object) {
 
+    @Override
+    public void save(Category category) {
+        categoryRepository.save(category);
     }
 
     @Override
-    public void update(Object object) {
-
+    public void update(Category category) {
+        categoryRepository.save(category);
     }
 
     @Override
-    public void delete(Object object) {
-
+    public void delete(Category category) {
+        categoryRepository.delete(category);
     }
 
     @Override
-    public Object get(long id) {
-        return null;
+    public Category get(long id) {
+        return categoryRepository.getById(id);
     }
 
     @Override
-    public Iterable getAll() {
+    public List<Category> getAll() {
         return categoryRepository.findAll();
     }
 }

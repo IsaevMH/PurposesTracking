@@ -11,7 +11,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id", columnDefinition = "serial")
-    private long caregory_id;
+    private long categoryId;
 
     @Column(name = "name")
     private String name;
@@ -21,11 +21,11 @@ public class Category {
 
     public Category() {}
 
-    public long getCaregory_id() {
-        return caregory_id;
+    public long getCategoryId() {
+        return categoryId;
     }
-    public void setCaregory_id(long caregory_id) {
-        this.caregory_id = caregory_id;
+    public void setCategoryId(long caregory_id) {
+        this.categoryId = caregory_id;
     }
 
     public String getName() {
@@ -40,11 +40,11 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return caregory_id == category.caregory_id;
+        return categoryId == category.categoryId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(caregory_id);
+        return Objects.hash(categoryId);
     }
 }
