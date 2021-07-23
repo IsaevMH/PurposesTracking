@@ -28,7 +28,7 @@ public class PurposeController {
     public String showPurposes(ModelMap model) {
         Iterable<Purpose> purposes = purposeService.getAll();
         model.put("purposes", purposes);
-        return "purposes-page";
+        return "/purpose/all";
     }
 
     @GetMapping("/purpose/modify/{id}")
@@ -39,7 +39,7 @@ public class PurposeController {
         model.put("categories", categories);
         model.put("users", users);
         model.put("purpose", purpose);
-        return "purpose-modification";
+        return "/purpose/modify";
     }
 
     @PostMapping("/purpose/modify")
@@ -58,7 +58,7 @@ public class PurposeController {
         model.put("categories", categories);
         model.put("users", users);
         model.put("purpose", purpose);
-        return "purpose-creation";
+        return "/purpose/new";
     }
 
     @PostMapping("/purpose/new")

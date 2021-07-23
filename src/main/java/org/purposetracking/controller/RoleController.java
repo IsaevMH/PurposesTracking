@@ -24,14 +24,14 @@ public class RoleController {
     public String showRoles(ModelMap map) {
         List<Role> roles = roleService.getAll();
         map.put("roles", roles);
-        return "roles-page";
+        return "/role/all";
     }
 
     @GetMapping("/role/new")
     public String showCtreationForm(ModelMap map) {
         Role role = new Role();
         map.put("role", role);
-        return "role-new";
+        return "/role/new";
     }
 
     @PostMapping("/role/new")
@@ -45,7 +45,7 @@ public class RoleController {
     public String showModificationForm(@PathVariable long id, ModelMap map) {
         Role role = roleService.get(id);
         map.put("role", role);
-        return "role-modify";
+        return "/role/modify";
     }
 
     @PostMapping("/role/modify")

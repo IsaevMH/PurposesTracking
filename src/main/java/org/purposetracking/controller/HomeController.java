@@ -14,6 +14,6 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(auth instanceof AnonymousAuthenticationToken)
             return "index";
-        return "purposes-page";
+        return "/purpose/all";
     }
 }

@@ -24,14 +24,14 @@ public class CategoryController {
     public String showCategories(ModelMap map) {
         List<Category> categories = categoryService.getAll();
         map.put("categories", categories);
-        return "categories-page";
+        return "/category/all";
     }
 
     @GetMapping("/category/new")
     public String showCtreationForm(ModelMap map) {
         Category category = new Category();
         map.put("category", category);
-        return "category-new";
+        return "/category/new";
     }
 
     @PostMapping("/category/new")
@@ -45,7 +45,7 @@ public class CategoryController {
     public String showModificationForm(@PathVariable long id, ModelMap map) {
         Category category = categoryService.get(id);
         map.put("category", category);
-        return "category-modify";
+        return "/category/modify";
     }
 
     @PostMapping("/category/modify")

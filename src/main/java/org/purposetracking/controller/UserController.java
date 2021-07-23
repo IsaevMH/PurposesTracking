@@ -21,7 +21,7 @@ public class UserController {
     public String showUsers(ModelMap model) {
         Iterable<User> users = userService.getAll();
         model.put("users", users);
-        return "users-page";
+        return "/user/all";
     }
 
     @GetMapping("/user/remove/{id}")
@@ -38,7 +38,7 @@ public class UserController {
         Set<Role> roles = user.getRoles();
         model.put("user", user);
         model.put("roles", roles);
-        return "/user-modification";
+        return "/user/modify";
     }
 
     @PostMapping("/user/modify")
@@ -52,7 +52,7 @@ public class UserController {
     public String showRegistrationForm(ModelMap model) {
         User user = new User();
         model.put("user", user);
-        return "/user-creation";
+        return "/user/new";
     }
 
     @PostMapping("/user/new")
@@ -66,6 +66,6 @@ public class UserController {
     public String showUserProfile(@PathVariable long id, ModelMap model) {
         User user = userService.get(id);
         model.put("user", user);
-        return "/user-profile";
+        return "/user/profile";
     }
 }
