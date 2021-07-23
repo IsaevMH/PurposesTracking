@@ -4,6 +4,8 @@ import org.purposetracking.model.Role;
 import org.purposetracking.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoleService implements RootService<Role> {
 
@@ -34,7 +36,7 @@ public class RoleService implements RootService<Role> {
     }
 
     @Override
-    public Iterable<Role> getAll() {
+    public List<Role> getAll() {
         return roleRepository.findAll();
     }
 }
