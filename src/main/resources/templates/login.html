@@ -1,5 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <!-- Bootstrap core CSS -->
@@ -12,11 +11,11 @@
             <form class="form-signin" name="f" th:action="@{/login}" method="post">
                 <fieldset>
                     <h1 class="h3 mb-3 font-weight-light">Please sign in</h1>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="User name"/>
+                    <label for="username"></label><input type="text" class="form-control" id="username" name="username" placeholder="User name"/>
                     <div class="mb-3"></div>
-                    <input type="text" class="form-control" id="password" name="password" placeholder="Password"/>
+                    <label for="password"></label><input type="text" class="form-control" id="password" name="password" placeholder="Password"/>
                     <div class="mb-3"></div>
-                    <div class="form-actions" th:href="@{/purposes}">
+                    <div class="form-actions" th:href="@{/purpose/all}">
                         <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
                     </div>
                 </fieldset>
