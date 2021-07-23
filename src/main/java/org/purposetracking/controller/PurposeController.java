@@ -20,40 +20,40 @@ public class PurposeController {
         this.userService = userService;
     }
 
-    @GetMapping("/purposes")
+    @GetMapping("/purpose/all")
     public String showPurposes(ModelMap model) {
         Iterable<Purpose> purposes = purposeService.getAll();
         model.put("purposes", purposes);
         return "purposes-page";
     }
 
-    @GetMapping("/purpose-modification/{id}")
+    @GetMapping("/purpose/modify/{id}")
     public String showModificationForm(@PathVariable long id, ModelMap model) {
         Purpose purpose = purposeService.get(id);
         Iterable<User> users = userService.getAll();
         model.put("users", users);
         model.put("purpose", purpose);
-        return "/purpose-modification";
+        return "purpose-modification";
     }
 
-    @PostMapping("/purpose-modification")
+    @PostMapping("/purpose/modify")
     public String modifyPurpose(@ModelAttribute Purpose purpose, ModelMap model) {
         model.put("purpose", purpose);
         purposeService.update(purpose);
         return showPurposes(model);
     }
 
-    @GetMapping("/purpose-creation")
+    @GetMapping("/purpose/new")
     public String showRegistrationForm(ModelMap model) {
         Purpose purpose = new Purpose();
         purpose.setDateOfCreation(LocalDateTime.now());
         Iterable<User> users = userService.getAll();
         model.put("users", users);
         model.put("purpose", purpose);
-        return "/purpose-creation";
+        return "purpose-creation";
     }
 
-    @PostMapping("/purpose-creation")
+    @PostMapping("/purpose/new")
     public String createUser(@ModelAttribute Purpose purpose, @ModelAttribute User user, ModelMap model) {
         model.addAttribute("purpose", purpose);
         model.addAttribute("user", user);
@@ -61,7 +61,7 @@ public class PurposeController {
         return showPurposes(model);
     }
 
-    @GetMapping("/purpose-remove/{id}")
+    @GetMapping("/purpose/remove/{id}")
     public String deleteUser(@PathVariable long id, ModelMap model) {
         Purpose user = purposeService.get(id);
         if(user != null)

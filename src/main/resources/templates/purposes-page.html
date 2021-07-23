@@ -9,7 +9,7 @@
 <fieldset class="border p-4">
     <legend>List of purposes</legend>
     <div>
-        <a class="btn btn-success" role="button" th:href="@{/purpose-creation}">Add purpose</a>
+        <a class="btn btn-success" role="button" th:href="@{/purpose/new}">Add purpose</a>
     </div>
     <table class="table table-striped">
         <thead>
@@ -32,8 +32,8 @@
             </td>
             <td th:text="${purpose.daysTally}"/>
             <td>
-                <a class="btn btn-warning" th:href="@{/purpose-modification/{id}(id=${purpose.getId()})}">Modify</a>
-                <a class="btn btn-danger" th:href="@{/purpose-remove/{id}(id=${purpose.getId()})}">Delete</a>
+                <a class="btn btn-warning" th:href="@{/purpose/modify/{id}(id=${purpose.getId()})}">Modify</a>
+                <a class="btn btn-danger" th:href="@{/purpose/remove/{id}(id=${purpose.getId()})}">Delete</a>
             </td>
         </tr>
         </tbody>
