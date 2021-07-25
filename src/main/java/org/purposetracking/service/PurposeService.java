@@ -39,4 +39,8 @@ public class PurposeService implements RootService<Purpose> {
     public List<Purpose> getAll() {
         return purposeRepository.findAll();
     }
+
+    public List<Purpose> getAllByUserId(long id) {
+        return purposeRepository.getAllByUserId(id);
+    }
 }

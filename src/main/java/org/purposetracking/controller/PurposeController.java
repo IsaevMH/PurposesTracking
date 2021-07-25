@@ -6,10 +6,12 @@ import org.purposetracking.model.User;
 import org.purposetracking.service.CategoryService;
 import org.purposetracking.service.PurposeService;
 import org.purposetracking.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller()
 public class PurposeController {
@@ -26,7 +28,14 @@ public class PurposeController {
 
     @GetMapping("/purpose/all")
     public String showPurposes(ModelMap model) {
-        Iterable<Purpose> purposes = purposeService.getAll();
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findUserByName(userName);
+        String currentRole = user.getRoles().stream().findFirst().get().getName();
+        List<Purpose> purposes = null;
+        if (currentRole.equals("ROLE_ADMIN"))
+            purposes = purposeService.getAll();
+        else
+            purposes = purposeService.getAllByUserId(user.getId());
         model.put("purposes", purposes);
         return "/purpose/all";
     }

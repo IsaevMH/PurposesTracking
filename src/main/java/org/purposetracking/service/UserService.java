@@ -49,4 +49,8 @@ public class UserService implements RootService<User>{
 
     @Override
     public Iterable<User> getAll() { return userRepository.findAll();}
+
+    public User findUserByName(String name) {
+        return userRepository.findUserByUsername(name);
+    }
 }
